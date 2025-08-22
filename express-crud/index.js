@@ -37,22 +37,6 @@
     });
 
     // UPDATE
-    app.put('/siswa/:kode', (req, res) => {
-        const data = {
-            kode_siswa: req.body.kode_siswa,
-            nama_siswa: req.body.nama_siswa,
-            alamat_siswa: req.body.alamat_siswa,
-            tgl_siswa: req.body.tgl_siswa,
-            jurusan_siswa: req.body.jurusan_siswa
-        };
-
-        connection.query('ALTER TABLE MODIFY dt_siswa SET ?', data, (err, results) => {
-            if (err) return res.status(500).send(err);
-            res.send({ message: 'Data siswa ditambahkan!', id: results.insertId });
-        });
-    });
-
-
     app.put('/siswa/:kode_siswa', (req, res) => {
         const { kode_siswa } = req.params;
         const { nama_siswa, alamat_siswa, tgl_siswa, jurusan_siswa } = req.body;
